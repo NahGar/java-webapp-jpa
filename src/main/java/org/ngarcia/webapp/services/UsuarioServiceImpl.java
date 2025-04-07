@@ -1,9 +1,8 @@
 package org.ngarcia.webapp.services;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import org.ngarcia.webapp.configs.Service;
-import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Usuario;
 import org.ngarcia.webapp.repositories.*;
 
 import java.sql.SQLException;

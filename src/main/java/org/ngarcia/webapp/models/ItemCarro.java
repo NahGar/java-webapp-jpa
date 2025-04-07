@@ -1,5 +1,7 @@
 package org.ngarcia.webapp.models;
 
+import org.ngarcia.webapp.models.entities.Producto;
+
 import java.util.Objects;
 
 public class ItemCarro {

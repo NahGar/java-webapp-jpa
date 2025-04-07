@@ -1,10 +1,8 @@
-package org.ngarcia.webapp.models;
+package org.ngarcia.webapp.models.entities;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Named;
-
-import java.util.ArrayList;
 
 @RequestScoped
 @Named

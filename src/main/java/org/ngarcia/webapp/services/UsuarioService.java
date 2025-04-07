@@ -1,6 +1,6 @@
 package org.ngarcia.webapp.services;
 
-import org.ngarcia.webapp.models.Usuario;
+import org.ngarcia.webapp.models.entities.Usuario;
 
 import java.util.*;
 

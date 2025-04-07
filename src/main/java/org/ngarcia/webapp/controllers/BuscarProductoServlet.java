@@ -1,10 +1,8 @@
 package org.ngarcia.webapp.controllers;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import org.ngarcia.webapp.configs.ProductoServicePrincipal;
 import org.ngarcia.webapp.services.ProductoService;
-import org.ngarcia.webapp.services.ProductoServiceImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -12,7 +10,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 import java.util.Optional;
-import org.ngarcia.webapp.models.Producto;
+import org.ngarcia.webapp.models.entities.Producto;
 
 @WebServlet("/buscar-producto")
 public class BuscarProductoServlet extends HttpServlet {

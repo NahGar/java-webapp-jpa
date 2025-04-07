@@ -1,6 +1,6 @@
 package org.ngarcia.webapp.services;
 
-import org.ngarcia.webapp.models.Curso;
+import org.ngarcia.webapp.models.entities.Curso;
 
 import java.util.List;
 import java.util.Optional;

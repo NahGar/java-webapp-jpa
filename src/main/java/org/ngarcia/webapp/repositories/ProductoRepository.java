@@ -1,6 +1,6 @@
 package org.ngarcia.webapp.repositories;
 
-import org.ngarcia.webapp.models.Producto;
+import org.ngarcia.webapp.models.entities.Producto;
 
 import java.sql.SQLException;
 

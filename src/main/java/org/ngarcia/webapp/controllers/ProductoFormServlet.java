@@ -1,12 +1,12 @@
 package org.ngarcia.webapp.controllers;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import org.ngarcia.webapp.configs.ProductoServicePrincipal;
-import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Categoria;
+import org.ngarcia.webapp.models.entities.Producto;
 import org.ngarcia.webapp.services.*;
 
 import java.io.IOException;

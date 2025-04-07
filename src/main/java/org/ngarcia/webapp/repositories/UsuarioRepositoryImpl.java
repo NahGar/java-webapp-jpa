@@ -2,7 +2,7 @@ package org.ngarcia.webapp.repositories;
 
 import jakarta.inject.Inject;
 import org.ngarcia.webapp.configs.*;
-import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Usuario;
 
 import java.sql.*;
 import java.util.ArrayList;

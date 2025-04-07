@@ -4,7 +4,8 @@ import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Cliente;
+import org.ngarcia.webapp.models.entities.Factura;
 
 import java.io.IOException;
 

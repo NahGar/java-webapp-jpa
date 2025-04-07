@@ -6,7 +6,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
-import org.ngarcia.webapp.models.Producto;
+import org.ngarcia.webapp.models.entities.Producto;
 import org.ngarcia.webapp.services.ProductoService;
 import org.ngarcia.webapp.services.ProductoServiceImpl;
 

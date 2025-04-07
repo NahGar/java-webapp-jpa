@@ -4,11 +4,10 @@ import jakarta.inject.Inject;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.ngarcia.webapp.models.Curso;
+import org.ngarcia.webapp.models.entities.Curso;
 import org.ngarcia.webapp.services.*;
 
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.Optional;
 
 @WebServlet("/cursos/eliminar")

@@ -4,7 +4,8 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.inject.*;
 import org.ngarcia.webapp.configs.*;
-import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Categoria;
+import org.ngarcia.webapp.models.entities.Producto;
 
 import java.sql.*;
 import java.util.ArrayList;

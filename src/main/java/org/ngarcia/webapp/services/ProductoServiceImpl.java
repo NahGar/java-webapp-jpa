@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.ngarcia.webapp.models.Categoria;
-import org.ngarcia.webapp.models.Producto;
+import org.ngarcia.webapp.models.entities.Categoria;
+import org.ngarcia.webapp.models.entities.Producto;
 
 public class ProductoServiceImpl implements ProductoService {
 

@@ -2,7 +2,8 @@ package org.ngarcia.webapp.services;
 
 import jakarta.inject.Inject;
 import org.ngarcia.webapp.configs.ProductoServicePrincipal;
-import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Categoria;
+import org.ngarcia.webapp.models.entities.Producto;
 import org.ngarcia.webapp.repositories.*;
 
 import java.sql.*;

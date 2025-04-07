@@ -4,7 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
-import org.ngarcia.webapp.models.Producto;
+import org.ngarcia.webapp.models.entities.Producto;
 import org.ngarcia.webapp.services.*;
 
 import java.io.IOException;

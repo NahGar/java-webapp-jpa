@@ -1,16 +1,15 @@
 package org.ngarcia.webapp.controllers;
 
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.Optional;
 
 import org.ngarcia.webapp.configs.ProductoServicePrincipal;
 import org.ngarcia.webapp.models.*;
+import org.ngarcia.webapp.models.entities.Producto;
 import org.ngarcia.webapp.services.*;
 
 @WebServlet("/carro/actualizar")

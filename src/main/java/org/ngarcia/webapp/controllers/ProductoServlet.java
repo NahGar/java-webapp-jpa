@@ -10,7 +10,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
-import org.ngarcia.webapp.models.Producto;
+import org.ngarcia.webapp.models.entities.Producto;
 
 @WebServlet({"/productos"})
 public class ProductoServlet extends HttpServlet{

@@ -5,7 +5,9 @@ import jakarta.enterprise.context.*;
 import jakarta.enterprise.inject.*;
 import jakarta.enterprise.inject.spi.InjectionPoint;
 import jakarta.inject.Named;
-import org.ngarcia.webapp.models.LineaFactura;
+import jakarta.persistence.EntityManager;
+import org.ngarcia.webapp.models.entities.LineaFactura;
+import org.ngarcia.webapp.utils.JpaUtil;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -35,6 +37,7 @@ public class ProducerResources {
    //en lugar del autoclose en ConexionFilter
    public void close(@Disposes @MysqlConn Connection conn) throws SQLException {
       conn.close();
+      //log.info("cerrando la conexion a la bd mysql");
    }
 
    @Produces
@@ -57,5 +60,18 @@ public class ProducerResources {
       lineaFactura.setCantidad(4);
       lineasFactura.add(lineaFactura);
       return lineasFactura;
+   }
+
+   @Produces
+   @RequestScoped
+   private EntityManager beanEntityManager() {
+      return JpaUtil.getEntityManeger();
+   }
+
+   public void close(@Disposes EntityManager entityManager) {
+      if(entityManager.isOpen()) {
+         entityManager.close();
+         //log.info("cerrando la conexión de EntityManager");
+      }
    }
 }

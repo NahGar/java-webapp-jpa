@@ -1,4 +1,4 @@
-package org.ngarcia.webapp.models;
+package org.ngarcia.webapp.models.entities;
 
 public class LineaFactura {
 

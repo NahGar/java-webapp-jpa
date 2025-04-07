@@ -8,7 +8,7 @@ import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.util.Optional;
 
-import org.ngarcia.webapp.models.Usuario;
+import org.ngarcia.webapp.models.entities.Usuario;
 import org.ngarcia.webapp.services.*;
 
 @WebServlet({"/login","/login.html"})

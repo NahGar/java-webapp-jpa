@@ -1,8 +1,7 @@
 package org.ngarcia.webapp.services;
 
-import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import org.ngarcia.webapp.models.Curso;
+import org.ngarcia.webapp.models.entities.Curso;
 import org.ngarcia.webapp.repositories.*;
 
 import java.sql.*;
