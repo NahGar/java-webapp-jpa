@@ -11,6 +11,9 @@
       <class>
          org.ngarcia.webapp.interceptors.TransactionalInterceptor
       </class>
+      <class>
+         org.ngarcia.webapp.interceptors.TransactionalJpaInterceptor
+      </class>
    </interceptors>
       
 </beans>

@@ -10,6 +10,7 @@ import java.util.List;
 
 //@ApplicationScoped
 @RepositoryCDI
+@RepositoryJdbc
 public class UsuarioRepositoryImpl implements UsuarioRepository {
 
    @Inject

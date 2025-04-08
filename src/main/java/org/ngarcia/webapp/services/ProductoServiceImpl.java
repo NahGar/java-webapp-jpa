@@ -1,68 +1,127 @@
 package org.ngarcia.webapp.services;
 
-import java.util.Arrays;
+import jakarta.inject.Inject;
+import org.ngarcia.webapp.configs.ProductoServicePrincipal;
+import org.ngarcia.webapp.interceptors.TransactionalJpa;
+import org.ngarcia.webapp.models.entities.*;
+import org.ngarcia.webapp.repositories.*;
+
 import java.util.List;
 import java.util.Optional;
+import org.ngarcia.webapp.configs.Service;
+import org.ngarcia.webapp.interceptors.Logging;
 
-import org.ngarcia.webapp.models.entities.Categoria;
-import org.ngarcia.webapp.models.entities.Producto;
-
+//@ApplicationScoped
+//para identificar entre esta clase y ProductoServiceImpl (ambos utilizan la misma interface)
+//se puede hacer mediante Named o utilizando la clase ProductoServicePrincial (annotation)
+//@Named("productoDefault")
+@Service
+@ProductoServicePrincipal
+@TransactionalJpa
 public class ProductoServiceImpl implements ProductoService {
 
-    @Override
-    public List<Producto> listar() {
-        return Arrays.asList(new Producto(1L,"notebook",175000),
-                new Producto(2L,"mesa escritorio",100000),
-                new Producto(3L,"mesa de cocina",90000),
-                new Producto(4L,"teclado",50000));
-    }
+   @Inject
+   @RepositoryJpa
+   private ProductoRepository repositoryJdbc;
+   //private CrudRepository<Producto> repositoryJdbc;
 
-    @Override
-    public Optional<Producto> findOneByName(String name) {
-        return  listar().stream()
-                .filter( p -> {
-                    return name==null || name.isBlank() ? 
-                            false : p.getNombre().contains(name);
-                }).findFirst();
-    }
+   @Inject
+   @RepositoryJpa
+   private CrudRepository<Categoria> repositoryCategoriaJdbc;
 
-    @Override
-    public List<Producto> findAllByName(String name) {
-        return  listar().stream()
-                .filter( p -> {
-                    return name==null || name.isBlank() ? 
-                            false : p.getNombre().contains(name);
-                }).toList();
-    }
-
-    @Override
-    public Optional<Producto> findById(Long id) {
-        return  listar().stream()
-                .filter( p -> p.getId().equals(id)).findFirst();
-    }
+   //public ProductoServiceJdbcImpl(Connection conn) {
+   //   this.repositoryJdbc = new ProductoRepositoryJdbcImpl(conn);
+   //   this.repositoryCategoriaJdbc = new CategoriaRepositoryImpl(conn);
+   //}
 
    @Override
-   public void guardar(Producto producto) {
-
+   @Logging
+   public List<Producto> listar() {
+      try {
+         return repositoryJdbc.listar();
+      }
+      catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
    }
 
    @Override
-   public void eliminar(Long id) {
-
+   public Optional<Producto> findOneByName(String name) {
+      try {
+         return repositoryJdbc.porNombre(name).stream().findFirst();
+      }
+      catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
    }
 
    @Override
-   public List<Categoria> listarCategoria() {
+   public List<Producto> findAllByName(String name) {
       return List.of();
    }
 
    @Override
+   public Optional<Producto> findById(Long id) {
+      try {
+         return Optional.ofNullable(repositoryJdbc.porId(id));
+      }
+      catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
+   }
+
+   @Override
+   public void guardar(Producto producto) {
+      try {
+         repositoryJdbc.guardar(producto);
+      } catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
+   }
+
+   @Override
+   public void eliminar(Long id) {
+      try {
+         repositoryJdbc.eliminar(id);
+      } catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
+   }
+
+   @Override
+   public List<Categoria> listarCategoria() {
+      try {
+         return repositoryCategoriaJdbc.listar();
+      } catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
+   }
+
+   @Override
    public Optional<Categoria> findByIdCategoria(Long id) {
-      return Optional.empty();
+      try {
+         return Optional.ofNullable(repositoryCategoriaJdbc.porId(id));
+      }
+      catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
    }
 
    @Override
    public Optional<Producto> findBySku(String sku) {
-      return Optional.empty();
+      try {
+         return Optional.ofNullable(repositoryJdbc.porSku(sku));
+      }
+      catch (Exception e) {
+         //se maneja en ConexionFilter
+         throw new ServiceJdbcException(e.getMessage(),e.getCause());
+      }
    }
 }

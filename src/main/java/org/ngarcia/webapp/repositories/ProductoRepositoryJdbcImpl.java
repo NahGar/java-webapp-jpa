@@ -14,6 +14,7 @@ import java.util.logging.Logger;
 
 //@ApplicationScoped
 @RepositoryCDI
+@RepositoryJdbc
 public class ProductoRepositoryJdbcImpl implements ProductoRepository {
 
    @Inject

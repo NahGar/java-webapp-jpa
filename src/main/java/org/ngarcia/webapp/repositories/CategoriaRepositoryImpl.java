@@ -10,6 +10,7 @@ import java.util.List;
 
 //@ApplicationScoped
 @RepositoryCDI
+@RepositoryJpa
 public class CategoriaRepositoryImpl implements CrudRepository<Categoria> {
 
    private Connection conn;

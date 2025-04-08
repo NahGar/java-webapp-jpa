@@ -6,7 +6,6 @@ import jakarta.inject.Named;
 import java.lang.annotation.*;
 import org.ngarcia.webapp.interceptors.*;
 
-@TransactionalJdbc
 @Logging
 @ApplicationScoped
 @Stereotype

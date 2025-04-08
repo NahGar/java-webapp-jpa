@@ -17,7 +17,7 @@ public class ProductoJsonServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        ProductoService service = new ProductoServiceImpl();
+        ProductoService service = new ProductoServiceListImpl();
         List<Producto> productos = service.listar();
         ObjectMapper mapper = new ObjectMapper();
         String json = mapper.writeValueAsString(productos);

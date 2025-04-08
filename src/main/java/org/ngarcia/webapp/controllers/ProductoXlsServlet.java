@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import org.ngarcia.webapp.models.entities.Producto;
 import org.ngarcia.webapp.services.ProductoService;
-import org.ngarcia.webapp.services.ProductoServiceImpl;
+import org.ngarcia.webapp.services.ProductoServiceListImpl;
 
 @WebServlet({"/productos.xls","/productos.html"})
 public class ProductoXlsServlet extends HttpServlet{
@@ -16,7 +16,7 @@ public class ProductoXlsServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         
-        ProductoService service = new ProductoServiceImpl();
+        ProductoService service = new ProductoServiceListImpl();
         List<Producto> productos = service.listar();
 
         String servletPath = req.getServletPath();
