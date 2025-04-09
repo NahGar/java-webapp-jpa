@@ -9,7 +9,8 @@ import java.util.List;
 
 @RepositoryJpa
 @RepositoryCDI
-public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
+//public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
+public class ProductoRepositoryJpaImpl implements ProductoRepository {
 
     //está defindo en ProducerResources
     @Inject
@@ -17,7 +18,7 @@ public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
 
     @Override
     public List<Producto> listar() throws Exception {
-        String sql = "from Producto";
+        String sql = "select p from Producto p left outer join fetch p.categoria";
         return em.createQuery(sql, Producto.class).getResultList();
     }
 
@@ -45,5 +46,11 @@ public class ProductoRepositoryJpaImpl implements CrudRepository<Producto> {
     @Override
     public void eliminar(Long id) throws Exception {
         em.remove(porId(id));
+    }
+
+    @Override
+    public Producto porSku(String sku) throws Exception {
+        String sql = "select p from Producto p where p.sku = :sku";
+        return em.createQuery(sql, Producto.class).setParameter("sku",sku).getSingleResult();
     }
 }

@@ -76,11 +76,11 @@ public class ProductoFormServlet extends HttpServlet {
          categoriaId = 0L;
       }
       
-      long id;
+      Long id;
       try {
-         id = Long.parseLong(req.getParameter("id"));
+         id = Long.valueOf(req.getParameter("id"));
       } catch (NumberFormatException e) {
-         id = 0L;
+         id = null;
       }
 
       Map<String,String> errores = new HashMap<>();

@@ -70,7 +70,7 @@
             </div>
 
             <div style="display: flex;"> <!-- entran en una fila -->
-                <a href="<%=request.getContextPath()%>/productos1.html" 
+                <a href="<%=request.getContextPath()%>/productos"
                       class="btn btn-danger w-50">Cancelar</a>
                 <input type="submit" class="btn btn-primary w-50"
                        value='${producto.id != null && producto.id > 0 ? "Editar" : "Crear"}'>

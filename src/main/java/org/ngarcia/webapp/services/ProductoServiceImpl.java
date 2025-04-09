@@ -22,12 +22,12 @@ public class ProductoServiceImpl implements ProductoService {
 
    @Inject
    @RepositoryJpa
-   private ProductoRepository repositoryJdbc;
-   //private CrudRepository<Producto> repositoryJdbc;
+   private ProductoRepositoryJpaImpl repository;
+   //private CrudRepository<Producto> repository;
 
    @Inject
    @RepositoryJpa
-   private CrudRepository<Categoria> repositoryCategoriaJdbc;
+   private CrudRepository<Categoria> repositoryCategoria;
 
    //public ProductoServiceJdbcImpl(Connection conn) {
    //   this.repositoryJdbc = new ProductoRepositoryJdbcImpl(conn);
@@ -38,7 +38,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Logging
    public List<Producto> listar() {
       try {
-         return repositoryJdbc.listar();
+         return repository.listar();
       }
       catch (Exception e) {
          //se maneja en ConexionFilter
@@ -49,7 +49,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public Optional<Producto> findOneByName(String name) {
       try {
-         return repositoryJdbc.porNombre(name).stream().findFirst();
+         return repository.porNombre(name).stream().findFirst();
       }
       catch (Exception e) {
          //se maneja en ConexionFilter
@@ -65,7 +65,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public Optional<Producto> findById(Long id) {
       try {
-         return Optional.ofNullable(repositoryJdbc.porId(id));
+         return Optional.ofNullable(repository.porId(id));
       }
       catch (Exception e) {
          //se maneja en ConexionFilter
@@ -76,7 +76,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public void guardar(Producto producto) {
       try {
-         repositoryJdbc.guardar(producto);
+         repository.guardar(producto);
       } catch (Exception e) {
          //se maneja en ConexionFilter
          throw new ServiceJdbcException(e.getMessage(),e.getCause());
@@ -86,7 +86,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public void eliminar(Long id) {
       try {
-         repositoryJdbc.eliminar(id);
+         repository.eliminar(id);
       } catch (Exception e) {
          //se maneja en ConexionFilter
          throw new ServiceJdbcException(e.getMessage(),e.getCause());
@@ -96,7 +96,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public List<Categoria> listarCategoria() {
       try {
-         return repositoryCategoriaJdbc.listar();
+         return repositoryCategoria.listar();
       } catch (Exception e) {
          //se maneja en ConexionFilter
          throw new ServiceJdbcException(e.getMessage(),e.getCause());
@@ -106,7 +106,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public Optional<Categoria> findByIdCategoria(Long id) {
       try {
-         return Optional.ofNullable(repositoryCategoriaJdbc.porId(id));
+         return Optional.ofNullable(repositoryCategoria.porId(id));
       }
       catch (Exception e) {
          //se maneja en ConexionFilter
@@ -117,7 +117,7 @@ public class ProductoServiceImpl implements ProductoService {
    @Override
    public Optional<Producto> findBySku(String sku) {
       try {
-         return Optional.ofNullable(repositoryJdbc.porSku(sku));
+         return Optional.ofNullable(repository.porSku(sku));
       }
       catch (Exception e) {
          //se maneja en ConexionFilter

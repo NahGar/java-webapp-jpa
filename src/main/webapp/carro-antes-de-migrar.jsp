@@ -49,7 +49,7 @@
                 <input type="submit" value="Guardar cambios" />
         </form>
         <% } %>
-        <p><a href="<%=request.getContextPath()%>/productos1.html">Seguir comprando</a></p>
+        <p><a href="<%=request.getContextPath()%>/productos">Seguir comprando</a></p>
         <p><a href="<%=request.getContextPath()%>/index.jsp">Volver</a></p>
     </body>
 </html>
