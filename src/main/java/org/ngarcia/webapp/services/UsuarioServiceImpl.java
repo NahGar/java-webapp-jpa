@@ -28,8 +28,14 @@ public class UsuarioServiceImpl implements UsuarioService {
    public Optional<Usuario> login(String username, String password) {
 
       try {
-         return Optional.ofNullable(repository.porUsername(username))
-                 .filter( u -> u.getPassword().equals(password));
+         //falla cuando no existe el usuario porque intenta hacer filter en un null
+         //return Optional.ofNullable(repository.porUsername(username))
+         //        .filter( u -> u.getPassword().equals(password));
+         Usuario usuario = repository.porUsername(username);
+         if(usuario != null && usuario.getPassword().equals(password)) {
+            return Optional.of(usuario);
+         }
+         return Optional.empty();
       } catch (Exception e) {
          throw new ServiceJdbcException(e.getMessage(),e.getCause());
       }
