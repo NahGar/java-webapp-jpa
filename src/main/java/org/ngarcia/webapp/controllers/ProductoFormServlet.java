@@ -94,7 +94,7 @@ public class ProductoFormServlet extends HttpServlet {
          errores.put("sku","Sku no debe superar los 10 caracteres");
       }
       else {
-         if(id == 0) { //si es un producto nuevo
+         if(id == null) { //si es un producto nuevo
             Optional<Producto> prodPorSku = service.findBySku(sku);
             if(prodPorSku.isPresent()) {
                 errores.put("sku","El producto "+ prodPorSku.get().getNombre()+" tiene ese sku");

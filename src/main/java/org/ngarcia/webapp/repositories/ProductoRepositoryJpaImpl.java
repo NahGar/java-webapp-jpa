@@ -2,6 +2,7 @@ package org.ngarcia.webapp.repositories;
 
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import org.ngarcia.webapp.configs.RepositoryCDI;
 import org.ngarcia.webapp.models.entities.Producto;
 
@@ -51,6 +52,14 @@ public class ProductoRepositoryJpaImpl implements ProductoRepository {
     @Override
     public Producto porSku(String sku) throws Exception {
         String sql = "select p from Producto p where p.sku = :sku";
-        return em.createQuery(sql, Producto.class).setParameter("sku",sku).getSingleResult();
+        //si no hay resultado JPA tira error
+        //return em.createQuery(sql, Producto.class).setParameter("sku",sku).getSingleResult();
+        try {
+            return em.createQuery(sql, Producto.class)
+                    .setParameter("sku", sku)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
     }
 }
